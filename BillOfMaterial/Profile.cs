@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 class Profile {
     public Profile() {
         this._metterWeight = 0;
+        this._type = "";
     }
 
     private string _type;
@@ -57,8 +58,10 @@ class Profile {
 
     private void calculateMetterweight() {
         profileDatabase db = new profileDatabase();
-        if (db.findMetterweight(this.Type) < 0) {
-            
+        this._metterWeight = db.findMetterweight(this.Type);
+        if (this._metterWeight < 0) {
+            CalculatedProfile match = new CalculatedProfile(this.Type);
+            this._metterWeight = match.MetterWeight;
         }
     }
 

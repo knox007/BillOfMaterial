@@ -17,6 +17,8 @@ namespace BillOfMaterial {
         private void MainWND_Load(object sender, EventArgs e) {
             
         }
+
+       
     }
 
 }
