@@ -13,5 +13,10 @@ namespace BillOfMaterial {
         public MainWND() {
             InitializeComponent();
         }
+
+        private void MainWND_Load(object sender, EventArgs e) {
+            
+        }
     }
+
 }
