@@ -53,7 +53,7 @@ class Profile {
     private void calculateTotals() {
         calculateMetterweight();
         this._totalWeight = this._number * this._metterWeight * this._length / 1000;
-        this._totalLength = this._number * this._length;
+        this._totalLength = this._number * this._length/1000;
     }
 
     private void calculateMetterweight() {
