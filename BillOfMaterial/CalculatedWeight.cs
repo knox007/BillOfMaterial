@@ -31,9 +31,9 @@ class CalculatedProfile {
     private double massWeight = 7850;
 
     public CalculatedProfile(string type) {
-        patterns.Add(new Patterns("Lrovno", @"^[L]\d{2,3}\*\d{1,2}$"));
-        patterns.Add(new Patterns("trubka", @"^[T]+[R]\d{1,3}\*\d+(\.\d{1,3})?$"));
-        patterns.Add(new Patterns("plochac", @"^[P]+[L]\d{1,4}\*\d{1,4}$"));
+        patterns.Add(new Patterns("Lrovno", @"^[Ll]\d{2,3}\*\d{1,2}$"));
+        patterns.Add(new Patterns("trubka", @"^[Tt]+[Rr]\d{1,3}\*\d+(\.\d{1,3})?$"));
+        patterns.Add(new Patterns("plochac", @"^[Pp]+[Ll]\d{1,4}\*\d{1,4}$"));
         this.inputType = type;
         findPattern();
         calculateWeight();
@@ -50,9 +50,10 @@ class CalculatedProfile {
     }
 
     private void calculateWeight() {
+        string removed;
         switch (this._type) {
             case "trubka":
-                string removed = this.inputType.Remove(0,2);
+                removed = this.inputType.Remove(0,2);
                 this.inputType = removed;
                 stringTrimm();
                 double d;
@@ -65,8 +66,16 @@ class CalculatedProfile {
                 this._metterWeight = area / 1000000 * massWeight;
                 break;
             case "Lrovno":
+                removed = this.inputType.Remove(0, 1);
+                this.inputType = removed;
                 stringTrimm();
-
+                this._metterWeight = calcLarea() * massWeight;
+                break;
+            case "plochac":
+                removed = this.inputType.Remove(0, 2);
+                this.inputType = removed;
+                stringTrimm();
+                this._metterWeight = calcPLarea() * massWeight;
                 break;
             case "NONCALC":
                 this._metterWeight = 0;
@@ -80,6 +89,27 @@ class CalculatedProfile {
     private void stringTrimm() {
         char delimiter = '*';
         this.splitted = this.inputType.Split(delimiter);
+    }
+
+    private double calcLarea() {
+        double h;
+        Double.TryParse(splitted[0],out h);
+        double t;
+        double.TryParse(splitted[1], out t);
+        double area1 = h * t;
+        double area2 = (h - t) * t;
+        double area = area1 + area2;
+        area = area / 1000000 * 1.01;
+        return area;
+    }
+
+    private double calcPLarea() {
+        double h;
+        Double.TryParse(splitted[0], out h);
+        double t;
+        double.TryParse(splitted[1], out t);
+        double area1 = h * t / 1000000;
+        return area1;
     }
 }
 
