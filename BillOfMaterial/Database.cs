@@ -37,7 +37,6 @@ class profileDatabase {
             var values = line.Split(';');
             var item = new DBprofile(values[0], Convert.ToDouble(values[1]));
             this.database.Add(item);
-            Console.WriteLine(item.Type +" "+ item.Weight);
         }
         reader.Close();
     }

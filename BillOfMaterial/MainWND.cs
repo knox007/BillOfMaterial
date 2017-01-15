@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace BillOfMaterial {
     public partial class MainWND : Form {
@@ -16,6 +17,7 @@ namespace BillOfMaterial {
         }
 
         private DataTable partsTable = new DataTable();
+        private BOM.Assembly assembly = new BOM.Assembly();
 
        private void saveData() {
             DataRow row;
@@ -45,20 +47,52 @@ namespace BillOfMaterial {
             partsTable.Columns.Add(dcProfileType);
             partsTable.Columns.Add(dcProfileNumber);
             partsTable.Columns.Add(dcProfileLength);
+            assemblyNumber.Text = assembly.Number.ToString();
+            assemblyName.Text = assembly.Name;
+            
         }
             
 
         private void buttonUpdate_Click(object sender, EventArgs e) {
+            this.assembly.Parts.Clear();
             for (int i = 0; i < dataGridProfiles.Rows.Count - 1; i++) {
                 Profile profile;
                 profile = this.profileBindingSource.List[i] as Profile;
-                Console.WriteLine(profile.Type);
+                this.assembly.Parts.Add(profile);
             }
+            double result = Math.Round(assembly.Weight, 2);
+            txtAssemblyWeight.Text = result.ToString();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
             Console.WriteLine(assemblyName.Text.ToString());
             saveData();         
+        }
+
+        // Assembly data
+        private void assemblyNumber_TextChanged(object sender, EventArgs e) {
+            int number;
+            string str = assemblyNumber.Text;
+            bool prased = Int32.TryParse(str, out number);
+            if (prased) {
+                this.assembly.Number = number;
+            }
+        }
+
+        private void assemblyName_TextChanged(object sender, EventArgs e) {
+            assembly.Name = assemblyName.Text;
+        }
+
+        private void assemblyNumber_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void assemblyName_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                SendKeys.Send("{TAB}");
+            }
         }
     }
 

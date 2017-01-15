@@ -10,7 +10,7 @@ namespace BOM {
         public Assembly() {
             _number = 0;
             _weigt = 0;
-            _name = "";
+            _name = "Default Ass";
         }
 
         private List<Profile> _parts = new List<Profile>();
@@ -20,19 +20,25 @@ namespace BOM {
 
         public int Number {
             get { return _number; }
-            set { _number = value; }
+            set {
+                _number = value;
+                AssemblyUpdate();
+            }
         }
 
         public double Weight {
             get {
                 AssemblyUpdate();
-                return _number;
+                return _weigt;
             }
         }
 
         public string Name {
             get { return _name; }
-            set { _name = value; }
+            set {
+                _name = value;
+                AssemblyUpdate();
+            }
         }
 
         public void AssemblyUpdate() {
@@ -40,13 +46,16 @@ namespace BOM {
             foreach (Profile profile in _parts) {
                 this._weigt = this._weigt + profile.TotalWeight;
             }
+            this._weigt = _number * this._weigt;
         }
 
         public List<Profile> Parts {
             get {
+                AssemblyUpdate();
                 return _parts;
             }
             set {
+                AssemblyUpdate();
                 _parts = value;
             }
         }

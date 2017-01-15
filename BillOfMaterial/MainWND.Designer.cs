@@ -24,11 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridProfiles = new System.Windows.Forms.DataGridView();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metterWeightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalWeightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profileBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -38,9 +41,10 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtAssemblyWeight = new System.Windows.Forms.TextBox();
+            this.assemblyNumber = new System.Windows.Forms.TextBox();
             this.assemblyName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -55,54 +59,70 @@
             this.dataGridProfiles.AutoGenerateColumns = false;
             this.dataGridProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numberDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
             this.lengthDataGridViewTextBoxColumn,
             this.totalLengthDataGridViewTextBoxColumn,
-            this.numberDataGridViewTextBoxColumn,
             this.metterWeightDataGridViewTextBoxColumn,
             this.totalWeightDataGridViewTextBoxColumn});
             this.dataGridProfiles.DataSource = this.profileBindingSource;
             this.dataGridProfiles.Location = new System.Drawing.Point(12, 107);
             this.dataGridProfiles.Name = "dataGridProfiles";
             this.dataGridProfiles.Size = new System.Drawing.Size(652, 233);
-            this.dataGridProfiles.TabIndex = 0;
+            this.dataGridProfiles.TabIndex = 3;
+            // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "Number";
+            this.numberDataGridViewTextBoxColumn.MaxInputLength = 3;
+            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            this.numberDataGridViewTextBoxColumn.Width = 25;
             // 
             // typeDataGridViewTextBoxColumn
             // 
             this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
             this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.MaxInputLength = 15;
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             // 
             // lengthDataGridViewTextBoxColumn
             // 
             this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
             this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
+            this.lengthDataGridViewTextBoxColumn.MaxInputLength = 15;
             this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
             // 
             // totalLengthDataGridViewTextBoxColumn
             // 
             this.totalLengthDataGridViewTextBoxColumn.DataPropertyName = "TotalLength";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.totalLengthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.totalLengthDataGridViewTextBoxColumn.HeaderText = "TotalLength";
             this.totalLengthDataGridViewTextBoxColumn.Name = "totalLengthDataGridViewTextBoxColumn";
             this.totalLengthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // numberDataGridViewTextBoxColumn
-            // 
-            this.numberDataGridViewTextBoxColumn.DataPropertyName = "Number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "Number";
-            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
-            // 
             // metterWeightDataGridViewTextBoxColumn
             // 
             this.metterWeightDataGridViewTextBoxColumn.DataPropertyName = "MetterWeight";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.metterWeightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.metterWeightDataGridViewTextBoxColumn.HeaderText = "MetterWeight";
+            this.metterWeightDataGridViewTextBoxColumn.MaxInputLength = 5;
             this.metterWeightDataGridViewTextBoxColumn.Name = "metterWeightDataGridViewTextBoxColumn";
             this.metterWeightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // totalWeightDataGridViewTextBoxColumn
             // 
             this.totalWeightDataGridViewTextBoxColumn.DataPropertyName = "TotalWeight";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.totalWeightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.totalWeightDataGridViewTextBoxColumn.HeaderText = "TotalWeight";
+            this.totalWeightDataGridViewTextBoxColumn.MaxInputLength = 5;
             this.totalWeightDataGridViewTextBoxColumn.Name = "totalWeightDataGridViewTextBoxColumn";
             this.totalWeightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -133,14 +153,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // databaseToolStripMenuItem
@@ -151,15 +171,43 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtAssemblyWeight);
+            this.groupBox1.Controls.Add(this.assemblyNumber);
             this.groupBox1.Controls.Add(this.assemblyName);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(652, 74);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Assembly";
+            // 
+            // txtAssemblyWeight
+            // 
+            this.txtAssemblyWeight.Location = new System.Drawing.Point(187, 18);
+            this.txtAssemblyWeight.Name = "txtAssemblyWeight";
+            this.txtAssemblyWeight.ReadOnly = true;
+            this.txtAssemblyWeight.Size = new System.Drawing.Size(100, 20);
+            this.txtAssemblyWeight.TabIndex = 3;
+            // 
+            // assemblyNumber
+            // 
+            this.assemblyNumber.Location = new System.Drawing.Point(6, 19);
+            this.assemblyNumber.Name = "assemblyNumber";
+            this.assemblyNumber.Size = new System.Drawing.Size(43, 20);
+            this.assemblyNumber.TabIndex = 1;
+            this.assemblyNumber.TextChanged += new System.EventHandler(this.assemblyNumber_TextChanged);
+            this.assemblyNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.assemblyNumber_KeyDown);
+            // 
+            // assemblyName
+            // 
+            this.assemblyName.Location = new System.Drawing.Point(55, 19);
+            this.assemblyName.Name = "assemblyName";
+            this.assemblyName.Size = new System.Drawing.Size(125, 20);
+            this.assemblyName.TabIndex = 2;
+            this.assemblyName.Text = "Default";
+            this.assemblyName.TextChanged += new System.EventHandler(this.assemblyName_TextChanged);
+            this.assemblyName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.assemblyName_KeyDown);
             // 
             // button1
             // 
@@ -170,23 +218,6 @@
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "assemblyWeight";
-            // 
-            // assemblyName
-            // 
-            this.assemblyName.Location = new System.Drawing.Point(6, 19);
-            this.assemblyName.Name = "assemblyName";
-            this.assemblyName.Size = new System.Drawing.Size(125, 20);
-            this.assemblyName.TabIndex = 3;
-            this.assemblyName.Text = "Default";
             // 
             // MainWND
             // 
@@ -213,23 +244,27 @@
 
         #endregion
 
+        
+
+
         private System.Windows.Forms.DataGridView dataGridProfiles;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem souborToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalLengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn metterWeightDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalWeightDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource profileBindingSource;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.TextBox assemblyName;
+        private System.Windows.Forms.TextBox assemblyNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalLengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn metterWeightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalWeightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox txtAssemblyWeight; 
     }
 }
 
